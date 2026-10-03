@@ -1,17 +1,49 @@
-# recipes_app
+# Рецепты
 
-A new Flutter project.
+Мобильное и веб-приложение на Flutter: каталог блюд с рецептами, поиском, фильтрами по категориям и избранным.
 
-## Getting Started
+## Возможности
 
-This project is a starting point for a Flutter application.
+- **Главный экран.** Сетка карточек с обложкой, временем приготовления и категорией (завтрак, обед, десерты).
+- **Поиск и фильтры.** Поиск по названию блюда и фильтрация по категориям через чипы. Поиск и категория работают вместе.
+- **Страница рецепта.** Большая обложка, список ингредиентов с чекбоксами (отмеченные зачёркиваются) и пошаговое приготовление.
+- **Избранное.** Сердечко на карточке и на странице рецепта добавляет блюдо в закладки. Закладки сохраняются на устройстве и остаются после перезапуска приложения. Чип «♥ Избранное» показывает только их.
 
-A few resources to get you started if this is your first Flutter project:
+## Технологии
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Flutter (Material 3)
+- Dart
+- [shared_preferences](https://pub.dev/packages/shared_preferences) для локального хранения избранного
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Запуск
+
+Нужны установленные [Flutter SDK](https://docs.flutter.dev/install) и любой редактор (например, VS Code с расширением Flutter).
+
+```bash
+git clone https://github.com/unki-web/recipes_app.git
+cd recipes_app
+flutter pub get
+flutter run
+```
+
+Чтобы быстро проверить приложение без эмулятора, запустите его в Chrome:
+
+```bash
+flutter run -d chrome
+```
+
+На Windows для сборки плагинов должен быть включён режим разработчика (`start ms-settings:developers`).
+
+## Структура
+
+```
+lib/
+  main.dart       # модель, данные, главный экран, страница рецепта
+pubspec.yaml      # зависимости
+```
+
+## Как добавить свой рецепт
+
+Рецепты лежат в списке `recipes` в файле `lib/main.dart`. Добавьте новый элемент `Recipe(...)` с названием, категорией, временем, эмодзи, цветом, списком ингредиентов и шагов.
+
+Чтобы вместо эмодзи показывалось фото, укажите у рецепта `imageUrl: 'https://...'`. Если картинка не загрузится, приложение покажет обложку с эмодзи.
